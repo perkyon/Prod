@@ -9,7 +9,22 @@
 
     <body>
       <div id="root"></div>
-      <script type="module" src="/src/main.tsx"></script>
+      <!-- Use relative path so it works under /Prod/ base on GitHub Pages -->
+      <script type="module" src="./src/main.tsx"></script>
+      <script>
+        // Optional: redirect legacy path-based URLs to hash (Pages 404 fallback handling)
+        (function() {
+          var redirect = sessionStorage.getItem('gh_redirect');
+          if (redirect) {
+            sessionStorage.removeItem('gh_redirect');
+            var data = JSON.parse(redirect);
+            if (data && data.path) {
+              var targetHash = '#' + data.path.replace(/^\//,'');
+              if (!location.hash) location.hash = targetHash;
+            }
+          }
+        })();
+      </script>
     </body>
   </html>
   
