@@ -65,9 +65,10 @@
           "dev": "vite",
           "build": "vite build",
           "preview": "vite preview --port 5050",
-          "build:gh": "vite build --base=/${npm_package_name}/",
+          "build:gh": "vite build --base=/buro/",
           "test": "vitest run",
           "test:watch": "vitest",
-          "test:ui": "vitest --ui"
+          "test:ui": "vitest --ui",
+          "clean": "rm -rf build node_modules"
       }
   }
